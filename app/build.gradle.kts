@@ -66,8 +66,6 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-navigation:$koin_android_version")
     implementation("io.insert-koin:koin-androidx-compose:$koin_android_compose_version")
 
-    //Window size
-    implementation("androidx.compose.material3:material3-window-size-class:1.2.0-alpha03")
 
     //LiveData
     implementation("androidx.compose.runtime:runtime-livedata")

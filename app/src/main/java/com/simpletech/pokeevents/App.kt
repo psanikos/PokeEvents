@@ -3,6 +3,7 @@ package com.simpletech.pokeevents
 import android.app.Application
 import com.simpletech.data.di.dataInjections
 import com.simpletech.domain.di.domainInjections
+import com.simpletech.pokeevents.di.appInjections
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext
 
@@ -18,7 +19,8 @@ class App : Application() {
             modules(
                 listOf(
                     dataInjections,
-                    domainInjections
+                    domainInjections,
+                    appInjections
                 )
             )
         }
