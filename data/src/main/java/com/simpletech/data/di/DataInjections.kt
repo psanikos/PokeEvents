@@ -2,6 +2,7 @@ package com.simpletech.data.di
 
 import android.util.Log
 import com.simpletech.data.services.PokeRepositoryImpl
+import com.simpletech.data.storage.RealmService
 import com.simpletech.domain.repositories.PokeRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
@@ -34,5 +35,7 @@ val dataInjections = module {
         }
     }
 
-    single<PokeRepository> { PokeRepositoryImpl(get())  }
+    single<RealmService> { RealmService() }
+
+    single<PokeRepository> { PokeRepositoryImpl(get(), get())  }
 }
