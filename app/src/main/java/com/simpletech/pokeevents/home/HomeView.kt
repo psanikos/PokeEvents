@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.simpletech.pokeevents.home.composables.FeaturedEvent
 import com.simpletech.pokeevents.home.composables.PopularComposable
 import com.simpletech.pokeevents.models.toPresentationModels
 
@@ -28,6 +29,9 @@ fun HomeView(
     ) {
         item {
             Spacer(modifier = Modifier.height(24.dp))
+        }
+        item {
+            FeaturedEvent()
         }
         item {
             PopularComposable(pokemons = popularPokemon.toPresentationModels())
