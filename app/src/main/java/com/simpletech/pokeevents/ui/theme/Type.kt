@@ -4,9 +4,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.simpletech.pokeevents.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -23,8 +21,7 @@ val Typography.KTitle: TextStyle
     get() = TextStyle(
         fontSize = 18.sp,
         lineHeight = 24.sp,
-        fontWeight = FontWeight(400),
-        textAlign = TextAlign.Center
+        fontWeight = FontWeight(400)
     )
 
 val Typography.KLargeTitle: TextStyle
@@ -44,7 +41,7 @@ val Typography.KBodyRegular: TextStyle
     get() = TextStyle(
         fontSize = 14.sp,
         fontWeight = FontWeight(400),
-        textAlign = TextAlign.Center,
+        lineHeight = 16.sp
     )
 val Typography.KBodyLarge: TextStyle
     get() = TextStyle(

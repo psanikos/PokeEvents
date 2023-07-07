@@ -23,15 +23,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.simpletech.pokeevents.R
 import com.simpletech.pokeevents.navigation.NavigationTarget
+import com.simpletech.pokeevents.ui.theme.KBodyLarge
+import com.simpletech.pokeevents.ui.theme.KButtonLarge
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
 
 @Composable
@@ -42,10 +42,17 @@ fun PokeTopBar(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .height(56.dp)
+            .padding(
+                top = 8.dp,
+                bottom = 24.dp
+            )
+            .height(40.dp)
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .padding(start = 16.dp, end = 16.dp, top = 8.dp)
+            .padding(
+                start = 16.dp,
+                end = 16.dp
+            )
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(4.dp),
@@ -66,18 +73,16 @@ fun PokeTopBar(
             ) {
                 Text(
                     text = "Kanto",
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        lineHeight = 30.sp,
-                        fontWeight = FontWeight(500),
-                    ),
-                    color = Color.White
+                    style = MaterialTheme.typography.KBodyLarge,
+                    color = Color.White,
+                    modifier = Modifier.height(30.dp),
+                    textAlign = TextAlign.Center
                 )
                 Box(
                     modifier = Modifier
                         .height(2.dp)
                         .fillMaxWidth()
-                        .padding(end = 8.dp)
+                        .padding(end = 6.dp)
                         .background(Color.White)
                 )
             }
@@ -94,23 +99,19 @@ fun PokeTopBar(
                 .background(
                     color = MaterialTheme.colorScheme.primary,
                     shape = RoundedCornerShape(size = 4.dp)
-                )
-                .padding(
-                    horizontal = 16.dp,
-                    vertical = 8.dp
                 ),
             contentPadding = PaddingValues(0.dp)
         ) {
-            Text(
-                text = "Sign In or Register",
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                    fontWeight = FontWeight(500),
-                    //letterSpacing = 0.32.sp,
-                ),
-                color = MaterialTheme.colorScheme.onPrimary
-            )
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Sign In or Register",
+                    style = MaterialTheme.typography.KButtonLarge,
+                    color = MaterialTheme.colorScheme.onPrimary
+                )
+            }
         }
     }
 }

@@ -8,8 +8,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,13 +19,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.simpletech.pokeevents.R
+import com.simpletech.pokeevents.ui.theme.KBodyRegular
+import com.simpletech.pokeevents.ui.theme.KLargeTitle
+import com.simpletech.pokeevents.ui.theme.KMediumTitle
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
 
 @Composable
@@ -35,7 +36,7 @@ fun FeaturedEvent() {
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
             .fillMaxWidth()
-            .height(437.dp)
+            .wrapContentHeight()
             .background(
                 color = Color(0xFF161616),
                 shape = RoundedCornerShape(
@@ -45,7 +46,6 @@ fun FeaturedEvent() {
                     0.dp, bottomStart = 0.dp
                 )
             )
-            .padding(top = 24.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.thumbnail),
@@ -55,7 +55,7 @@ fun FeaturedEvent() {
                 .clip(RoundedCornerShape(size = 4.dp))
                 .border(
                     width = 1.dp,
-                    color = Color(0xFF323232),
+                    color = MaterialTheme.colorScheme.surface,
                     shape = RoundedCornerShape(size = 4.dp)
                 )
                 .height(343.dp)
@@ -64,28 +64,18 @@ fun FeaturedEvent() {
         Column(
             verticalArrangement = Arrangement
                 .spacedBy(0.dp),
-            horizontalAlignment = Alignment.Start) {
+            horizontalAlignment = Alignment.Start
+        ) {
             Text(
                 text = "Popular in Kanto",
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    lineHeight = 24.sp,
-                    fontWeight = FontWeight(400),
-                    color = Color(0xFFDDFF55),
-                    textAlign = TextAlign.Center
-                ),
+                style = MaterialTheme.typography.KMediumTitle,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.height(24.dp)
+                modifier = Modifier.height(24.dp),
+                color = MaterialTheme.colorScheme.primary
             )
             Text(
                 text = "The Dream Continues!",
-                style = TextStyle(
-                    fontSize = 22.sp,
-                    lineHeight = 30.sp,
-                    fontWeight = FontWeight(400),
-                    color = Color(0xFFFFFFFF),
-                    textAlign = TextAlign.Center
-                ),
+                style = MaterialTheme.typography.KLargeTitle,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.height(30.dp)
             )
@@ -95,23 +85,15 @@ fun FeaturedEvent() {
             ) {
                 Text(
                     text = "Tue 4 Oct",
-                    style = TextStyle(
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight(400),
-                        color = Color(0xFFC2C2C2),
-                        textAlign = TextAlign.Center
-                    ),
+                    style = MaterialTheme.typography.KBodyRegular,
+                    color = MaterialTheme.colorScheme.onSecondary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.height(16.dp)
                 )
                 Text(
                     text = "Pallet Town",
-                    style = TextStyle(
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight(400),
-                        color = Color(0xFFC2C2C2),
-                        textAlign = TextAlign.Center
-                    ),
+                    style = MaterialTheme.typography.KBodyRegular,
+                    color = MaterialTheme.colorScheme.onSecondary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.height(16.dp)
                 )

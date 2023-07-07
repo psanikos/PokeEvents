@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,13 +24,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.simpletech.pokeevents.R
+import com.simpletech.pokeevents.ui.theme.KBodyRegular
+import com.simpletech.pokeevents.ui.theme.KMediumTitle
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
 
 @Composable
@@ -41,12 +41,7 @@ fun WeeklyEvents() {
     ) {
         Text(
             text = "This week",
-            style = TextStyle(
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                fontWeight = FontWeight(400),
-                color = Color(0xFFFFFFFF),
-            ),
+            style = MaterialTheme.typography.KMediumTitle,
             textAlign = TextAlign.Center,
             modifier = Modifier.height(24.dp)
         )
@@ -111,7 +106,7 @@ fun EventCard(
                 .clip(RoundedCornerShape(size = 4.dp))
                 .border(
                     width = 1.dp,
-                    color = Color(0xFF323232),
+                    color = MaterialTheme.colorScheme.surface,
                     shape = RoundedCornerShape(size = 4.dp)
                 )
                 .width(168.dp)
@@ -124,29 +119,19 @@ fun EventCard(
         ) {
             Text(
                 text = title,
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight(400),
-                    color = Color(0xFFFFFFFF)
-                ),
+                style = MaterialTheme.typography.KBodyRegular,
                 maxLines = 2,
                 textAlign = TextAlign.Start
             )
             Text(
                 text = subtitle1,
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight(400),
-                    color = Color(0xFFC2C2C2),
-                )
+                style = MaterialTheme.typography.KBodyRegular,
+                color = MaterialTheme.colorScheme.onSecondary
             )
             Text(
                 text = subtitle2,
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight(400),
-                    color = Color(0xFFC2C2C2),
-                )
+                style = MaterialTheme.typography.KBodyRegular,
+                color = MaterialTheme.colorScheme.onSecondary
             )
         }
     }
