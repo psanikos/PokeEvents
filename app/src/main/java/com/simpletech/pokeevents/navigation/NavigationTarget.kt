@@ -10,17 +10,17 @@ sealed class BottomNavigationTarget(
 ) {
 object Home: BottomNavigationTarget(
     route = "home",
-    title = "Home",
+    title = "HOME",
     image = R.drawable.home
 )
     object Search: BottomNavigationTarget(
         route = "search",
-        title = "Search",
+        title = "SEARCH",
         image = R.drawable.search
     )
     object Tickets: BottomNavigationTarget(
         route = "tickets",
-        title = "Tickets",
+        title = "TICKETS",
         image = R.drawable.ticket
     )
 }
@@ -30,5 +30,5 @@ sealed class NavigationTarget(
 ) {
     object Home: NavigationTarget("HomePage")
     object Register: NavigationTarget("Register")
-    // Add more for in view navigation
+    // Add more for in screen navigation
 }
