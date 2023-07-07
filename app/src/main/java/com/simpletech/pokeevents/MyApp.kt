@@ -1,14 +1,21 @@
 package com.simpletech.pokeevents
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.simpletech.pokeevents.home.HomeView
-import com.simpletech.pokeevents.home.HomeViewModel
-import org.koin.androidx.compose.koinViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.simpletech.pokeevents.navigation.GraphTargets
+import com.simpletech.pokeevents.navigation.NavigationTarget
+import com.simpletech.pokeevents.navigation.mainGraph
 
 @Composable
 fun MyApp() {
-    val homeViewModel = koinViewModel<HomeViewModel>()
+    val navController = rememberNavController()
 
-    HomeView(homeViewModel)
+    NavHost(
+        navController = navController,
+        startDestination = GraphTargets.Main.routes,
+        builder = {
+            mainGraph(navController)
+        })
 }
