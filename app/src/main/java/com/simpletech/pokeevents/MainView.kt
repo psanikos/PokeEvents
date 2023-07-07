@@ -121,7 +121,7 @@ fun MainView(
             }
         },
         topBar = {
-            PokeTopBar()
+            PokeTopBar(controller = navController)
         }
     ) {
         NavHost(

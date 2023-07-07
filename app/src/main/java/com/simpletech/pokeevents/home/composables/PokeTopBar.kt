@@ -28,11 +28,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.simpletech.pokeevents.R
+import com.simpletech.pokeevents.navigation.NavigationTarget
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
 
 @Composable
-fun PokeTopBar() {
+fun PokeTopBar(
+    controller: NavHostController
+) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -79,7 +84,9 @@ fun PokeTopBar() {
         }
         Spacer(modifier = Modifier.weight(1f))
         TextButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                controller.navigate(NavigationTarget.Register.route)
+            },
             modifier = Modifier
                 .width(170.dp)
                 .height(40.dp)
@@ -112,6 +119,6 @@ fun PokeTopBar() {
 @Composable
 fun PokeTopBarPreview() {
     PokeEventsTheme {
-        PokeTopBar()
+        PokeTopBar(controller = rememberNavController())
     }
 }
