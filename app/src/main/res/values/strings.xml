@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PokeEvents</string>
+    <string name="sign_register">Sign In or Register</string>
+    <string name="popular_pokemon">Popular Pokemon</string>
+    <string name="connect">CONNECT</string>
+    <string name="home">HOME</string>
+    <string name="search">SEARCH</string>
+    <string name="tickets">TICKETS</string>
 </resources>

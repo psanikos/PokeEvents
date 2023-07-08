@@ -50,7 +50,7 @@ fun FeaturedEvent() {
         Image(
             painter = painterResource(id = R.drawable.thumbnail),
             contentDescription = "image description",
-            contentScale = ContentScale.FillBounds,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .clip(RoundedCornerShape(size = 4.dp))
                 .border(

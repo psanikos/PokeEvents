@@ -1,5 +1,6 @@
 package com.simpletech.pokeevents.navigation
 
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -11,9 +12,10 @@ import com.simpletech.pokeevents.home.composables.NotImplementedView
 import org.koin.androidx.compose.getViewModel
 
 sealed class GraphTargets(val routes: String) {
-    object Main: GraphTargets("MainRoutes")
-    object Tabs: GraphTargets("TabRouted")
+    object Main : GraphTargets("MainRoutes")
+    object Tabs : GraphTargets("TabRoutes")
 }
+
 fun NavGraphBuilder.tabGraph(navController: NavHostController) {
     navigation(
         startDestination = BottomNavigationTarget.Home.route,
@@ -35,13 +37,19 @@ fun NavGraphBuilder.tabGraph(navController: NavHostController) {
     }
 }
 
-fun NavGraphBuilder.mainGraph(navController: NavHostController) {
+fun NavGraphBuilder.mainGraph(
+    navController: NavHostController,
+    windowSizeClass: WindowSizeClass
+) {
     navigation(
         startDestination = NavigationTarget.Home.route,
         route = GraphTargets.Main.routes
     ) {
         composable(NavigationTarget.Home.route) {
-            MainView(navController = navController)
+            MainView(
+                navController = navController,
+                windowSizeClass = windowSizeClass
+            )
         }
         composable(NavigationTarget.Register.route) {
             NotImplementedView()

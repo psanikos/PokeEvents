@@ -1,15 +1,12 @@
 package com.simpletech.pokeevents.home.composables
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -18,7 +15,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -29,29 +25,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.android.InternalPlatformTextApi
-import androidx.compose.ui.text.android.style.LineHeightStyleSpan
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.simpletech.data.base.thisOrEmpty
-import com.simpletech.domain.models.PokemonDAO
 import com.simpletech.pokeevents.R
 import com.simpletech.pokeevents.models.PokemonModel
-import com.simpletech.pokeevents.models.Pokemons
 import com.simpletech.pokeevents.ui.theme.KBodyRegular
 import com.simpletech.pokeevents.ui.theme.KButton
 import com.simpletech.pokeevents.ui.theme.KMediumTitle
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
-import io.ktor.http.Url
 
 @Composable
 fun PopularComposable(pokemons: List<PokemonModel>) {
@@ -63,7 +47,7 @@ fun PopularComposable(pokemons: List<PokemonModel>) {
             .wrapContentHeight()
     ) {
         Text(
-            text = "Popular Pokemon",
+            text = stringResource(id = R.string.popular_pokemon),
             style = MaterialTheme.typography.KMediumTitle
         )
         LazyRow(
@@ -102,15 +86,15 @@ private fun PopularPokemonComposable(pokemon: PokemonModel) {
                 .background(color = MaterialTheme.colorScheme.primaryContainer),
             contentAlignment = Alignment.Center
         ) {
-        AsyncImage(
-            model = ImageRequest.Builder(context)
-                .data(pokemon.imageUrl)
-                .crossfade(true)
-                .build(),
-            placeholder = null,
-            contentDescription = "${pokemon.name} image)",
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.size(80.dp)
+            AsyncImage(
+                model = ImageRequest.Builder(context)
+                    .data(pokemon.imageUrl)
+                    .crossfade(true)
+                    .build(),
+                placeholder = null,
+                contentDescription = "${pokemon.name} image)",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(80.dp)
             )
         }
         Box(
@@ -139,11 +123,11 @@ private fun PopularPokemonComposable(pokemon: PokemonModel) {
                 ),
             contentPadding = PaddingValues(0.dp)
         ) {
-                Text(
-                    text = "CONNECT",
-                    style = MaterialTheme.typography.KButton,
-                    color = MaterialTheme.colorScheme.onPrimary
-                )
+            Text(
+                text = stringResource(id = R.string.connect),
+                style = MaterialTheme.typography.KButton,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
         }
     }
 }
@@ -152,8 +136,11 @@ private fun PopularPokemonComposable(pokemon: PokemonModel) {
 @Composable
 fun PopularPokemonComposablePreview() {
     PokeEventsTheme {
-        Box(modifier = Modifier.wrapContentSize()
-            .background(color = Color(0xFF161616))) {
+        Box(
+            modifier = Modifier
+                .wrapContentSize()
+                .background(color = Color(0xFF161616))
+        ) {
             PopularComposable(pokemons = PokemonModel.previewItems)
         }
     }

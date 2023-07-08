@@ -10,15 +10,15 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val fetchPopularPokemonUseCase: FetchPopularPokemonUseCase
-): ViewModel() {
+) : ViewModel() {
 
     private val _popularPokemon = MutableStateFlow(listOf<PokemonDAO>())
-    val popularPokemon =_popularPokemon.asStateFlow()
-
+    val popularPokemon = _popularPokemon.asStateFlow()
 
     init {
         fetchPopularPokemon()
     }
+
     private fun fetchPopularPokemon() {
         viewModelScope.launch {
             val response = fetchPopularPokemonUseCase.execute()

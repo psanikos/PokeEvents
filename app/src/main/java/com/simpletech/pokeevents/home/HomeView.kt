@@ -21,12 +21,12 @@ fun HomeView(
     viewModel: HomeViewModel
 ) {
     val popularPokemon by viewModel.popularPokemon.collectAsStateWithLifecycle(listOf())
+
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(40.dp),
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-
         item {
             FeaturedEvent()
         }
