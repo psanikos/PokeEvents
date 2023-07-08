@@ -1,6 +1,5 @@
 package com.simpletech.pokeevents.home.composables
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,13 +26,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.simpletech.pokeevents.R
+import com.simpletech.pokeevents.models.EventModel
 import com.simpletech.pokeevents.ui.theme.KBodyRegular
 import com.simpletech.pokeevents.ui.theme.KMediumTitle
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
 
 @Composable
-fun WeeklyEvents() {
+fun WeeklyEvents(
+    events: List<EventModel>
+) {
     Column(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -52,34 +53,18 @@ fun WeeklyEvents() {
                 .horizontalScroll(rememberScrollState())
                 .height(IntrinsicSize.Max)
         ) {
-            EventCard(
-                title = "Legend? Go! Friends? Go!",
-                subtitle1 = "Sun 18 Oct",
-                subtitle2 = "Cinnabar Island",
-                image = R.drawable.listthumbnail
-            )
-            EventCard(
-                title = "EXHALE with Professor Oak",
-                subtitle1 = "Sun 18 Oct",
-                subtitle2 = "Celadon City",
-                image = R.drawable.listthumbnail2
-            )
-            EventCard(
-                title = "Explore the seas",
-                subtitle1 = "Mon 19 Oct",
-                subtitle2 = "Cerulean City",
-                image = R.drawable.thumbnaillist3
-            )
+            events.forEach {
+                EventCard(
+                    event = it
+                )
+            }
         }
     }
 }
 
 @Composable
 fun EventCard(
-    title: String,
-    subtitle1: String,
-    subtitle2: String,
-    @DrawableRes image: Int
+    event: EventModel
 ) {
     Column(
         verticalArrangement = Arrangement
@@ -99,7 +84,7 @@ fun EventCard(
             )
     ) {
         Image(
-            painter = painterResource(id = image),
+            painter = painterResource(id = event.image),
             contentDescription = "image description",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -118,18 +103,18 @@ fun EventCard(
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = title,
+                text = event.title,
                 style = MaterialTheme.typography.KBodyRegular,
                 maxLines = 2,
                 textAlign = TextAlign.Start
             )
             Text(
-                text = subtitle1,
+                text = event.date,
                 style = MaterialTheme.typography.KBodyRegular,
                 color = MaterialTheme.colorScheme.onSecondary
             )
             Text(
-                text = subtitle2,
+                text = event.location,
                 style = MaterialTheme.typography.KBodyRegular,
                 color = MaterialTheme.colorScheme.onSecondary
             )
@@ -141,6 +126,6 @@ fun EventCard(
 @Composable
 fun WeeklyEventsPreview() {
     PokeEventsTheme {
-        WeeklyEvents()
+        WeeklyEvents(events = EventModel.events)
     }
 }

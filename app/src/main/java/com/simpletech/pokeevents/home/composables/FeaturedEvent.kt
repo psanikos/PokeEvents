@@ -22,14 +22,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.simpletech.pokeevents.R
+import com.simpletech.data.base.thisOrEmpty
+import com.simpletech.pokeevents.models.EventModel
 import com.simpletech.pokeevents.ui.theme.KBodyRegular
 import com.simpletech.pokeevents.ui.theme.KLargeTitle
 import com.simpletech.pokeevents.ui.theme.KMediumTitle
 import com.simpletech.pokeevents.ui.theme.PokeEventsTheme
 
 @Composable
-fun FeaturedEvent() {
+fun FeaturedEvent(
+    event: EventModel
+) {
     Column(
         verticalArrangement = Arrangement
             .spacedBy(16.dp, Alignment.Top),
@@ -48,7 +51,7 @@ fun FeaturedEvent() {
             )
     ) {
         Image(
-            painter = painterResource(id = R.drawable.thumbnail),
+            painter = painterResource(id = event.image),
             contentDescription = "image description",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -67,14 +70,14 @@ fun FeaturedEvent() {
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = "Popular in Kanto",
+                text = event.header.thisOrEmpty(),
                 style = MaterialTheme.typography.KMediumTitle,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.height(24.dp),
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "The Dream Continues!",
+                text = event.title,
                 style = MaterialTheme.typography.KLargeTitle,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.height(30.dp)
@@ -84,14 +87,14 @@ fun FeaturedEvent() {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text(
-                    text = "Tue 4 Oct",
+                    text = event.date,
                     style = MaterialTheme.typography.KBodyRegular,
                     color = MaterialTheme.colorScheme.onSecondary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.height(16.dp)
                 )
                 Text(
-                    text = "Pallet Town",
+                    text = event.location,
                     style = MaterialTheme.typography.KBodyRegular,
                     color = MaterialTheme.colorScheme.onSecondary,
                     textAlign = TextAlign.Center,
@@ -106,6 +109,6 @@ fun FeaturedEvent() {
 @Composable
 fun FeatureEventPreview() {
     PokeEventsTheme {
-        FeaturedEvent()
+        FeaturedEvent(event = EventModel.promotedEvent)
     }
 }

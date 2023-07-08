@@ -38,7 +38,6 @@ fun MainView(
         }
     ) {
         Row(modifier = Modifier.fillMaxSize()) {
-
             if (!showBottomBar) {
                 PokeNavigationRail(controller = tabController)
             }

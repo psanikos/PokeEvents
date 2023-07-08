@@ -13,6 +13,7 @@ import androidx.navigation.NavHostController
 import com.simpletech.pokeevents.home.composables.FeaturedEvent
 import com.simpletech.pokeevents.home.composables.PopularComposable
 import com.simpletech.pokeevents.home.composables.WeeklyEvents
+import com.simpletech.pokeevents.models.EventModel
 import com.simpletech.pokeevents.models.toPresentationModels
 
 @Composable
@@ -28,10 +29,10 @@ fun HomeView(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
         item {
-            FeaturedEvent()
+            FeaturedEvent(EventModel.promotedEvent)
         }
         item {
-            WeeklyEvents()
+            WeeklyEvents(EventModel.events)
         }
         item {
             PopularComposable(pokemons = popularPokemon.toPresentationModels())
